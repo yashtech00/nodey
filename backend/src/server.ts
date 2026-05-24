@@ -7,7 +7,7 @@ import errorHandler from './middlewares/errorHandler.js';
 
 // Route files
 import auth from './routes/auth.js';
-
+import nodes from './routes/node.js';
 
 // Load env vars
 dotenv.config();
@@ -34,6 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/auth', auth);
+app.use('/api/nodes', nodes);
 
 // Health check route
 app.get('/health', (req, res) => {
@@ -52,6 +53,7 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       auth: '/api/auth',
+      nodes: '/api/nodes',
       health: '/health'
     },
     documentation: 'See README.md for API documentation'
